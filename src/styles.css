@@ -25,6 +25,10 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.imgCardsMarkup {
+  display: flex;
+  flex-wrap: wrap;
+}
 .photo-card > img {
   width: 100%/3;
 }

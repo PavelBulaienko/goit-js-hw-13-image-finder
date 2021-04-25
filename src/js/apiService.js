@@ -6,12 +6,16 @@ export default class ApiService {
   constructor() {}
 
   async fetchByQuery(query) {
-    const response = await fetch(
-      `${BASE_URL}?image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=12&key=${KEY}`,
-    );
-    const data = await response.json();
-    page++;
-    return data;
+    try {
+      const response = await fetch(
+        `${BASE_URL}?image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=12&key=${KEY}`,
+      );
+      const data = await response.json();
+      page++;
+      return data;
+    } catch (error) {
+      console.log('error', error);
+    }
   }
   resetPage() {
     page = 1;

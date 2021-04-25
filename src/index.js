@@ -29,9 +29,13 @@ async function onInputHandle() {
 }
 
 function renderImages(images) {
+  const imgCardsMarkup = document.createElement('div');
+  imgCardsMarkup.classList.add('imgCardsMarkup');
   images.forEach(image => {
-    refs.ulGalleryRef.insertAdjacentHTML('beforeend', imgTemplate(image));
+    imgCardsMarkup.insertAdjacentHTML('beforeend', imgTemplate(image));
   });
+
+  refs.ulGalleryRef.append(imgCardsMarkup);
 }
 
 refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
