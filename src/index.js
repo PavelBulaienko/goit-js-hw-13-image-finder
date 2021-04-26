@@ -7,6 +7,7 @@ const refs = {
   input: document.querySelector('[name="query"]'),
   ulGalleryRef: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.loadMoreBtn'),
+  doc: document,
 };
 
 const apiService = new ApiService();
@@ -29,13 +30,8 @@ async function onInputHandle() {
 }
 
 function renderImages(images) {
-  const imgCardsMarkup = document.createElement('div');
-  imgCardsMarkup.classList.add('imgCardsMarkup');
-  images.forEach(image => {
-    imgCardsMarkup.insertAdjacentHTML('beforeend', imgTemplate(image));
-  });
-
-  refs.ulGalleryRef.append(imgCardsMarkup);
+  const imgCardsMarkup = images.map(image => imgTemplate(image)).join('');
+  refs.ulGalleryRef.insertAdjacentHTML('beforeend', imgCardsMarkup);
 }
 
 refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
